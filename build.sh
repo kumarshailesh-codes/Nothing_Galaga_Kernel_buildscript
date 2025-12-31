@@ -83,7 +83,7 @@ cat > .repo/local_manifests/galaga.xml <<'EOF'
 </manifest>
 EOF
 
-repo sync -c -j$(nproc) --force-sync --no-tags --no-clone-bundle
+repo sync -c -j$(nproc) --no-tags
 
 # Add KernelSu / KSU-Next ( uncomment below path to add KSU / KSU NEXT SUPPORT)
  cd $KERNEL/kernel-6.1/
