@@ -3,7 +3,7 @@ set -e
 
 clear
 
-KERNEL="$HOME/Documents/galaga-kernel"
+KERNEL="$(pwd)/galaga-kernel"
 
 echo "This will REMOVE the following directory if it exists:"
 echo "  - $KERNEL"
@@ -86,12 +86,15 @@ EOF
 repo sync -c -j$(nproc) --force-sync --no-tags --no-clone-bundle
 
 # Add KernelSu / KSU-Next ( uncomment below path to add KSU / KSU NEXT SUPPORT)
- cd $HOME/Documents/galaga-kernel/kernel-6.1/
+ cd $KERNEL/kernel-6.1/
 
 # Uncomment this for KernelSU-next
  curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -
 
 # UNcomment this for KernelSU
 # curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+
+sleep 1
+cd ..
 
 bazel run //kernel-6.1:kernel_aarch64_dist -- --destdir=out
